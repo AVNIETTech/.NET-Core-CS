@@ -16,12 +16,20 @@ namespace linkedlist
             {
                 manager.AddNewVehicle(new Vehicle
                 {
-                    brandName = "Mercedez",
+                    brandName = "Mercedes",
                     engineSerial = "EN03G34939H",
                     wheelCount = 4,
                     isRegistered = false
                 });
             }
+
+            manager.AddNewVehicle(new Vehicle
+            {
+                brandName = "Vespa",
+                engineSerial = "VSP0029939RH",
+                wheelCount = 2,
+                isRegistered = true
+            });
 
             int i = 0;
             foreach (Vehicle vehicle in manager.GetVehiclesList())
@@ -34,6 +42,15 @@ namespace linkedlist
                 Console.WriteLine();
                 i += 1;
             }
+
+            Console.WriteLine();
+            Console.WriteLine($"Recently added vehicle: {manager.FindLatestVehicle().Value.brandName}");
+            Console.WriteLine($"First vehicle: {manager.FindFirstAddedVehicle().Value.brandName}");
+
+            Console.WriteLine();
+            Vehicle vehicleByEngine = manager.FindVehicleByEngineSerial("EN03G34939H");
+            Console.WriteLine($"Vehicle with the engine No EN03G34939H: {vehicleByEngine.brandName}");
+
         }
     }
 }
